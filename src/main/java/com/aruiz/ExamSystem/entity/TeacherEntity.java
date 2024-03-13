@@ -3,7 +3,7 @@ package com.aruiz.ExamSystem.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.Set;
+import java.util.List;
 
 @AllArgsConstructor // Anotación para generar automáticamente un constructor con todos los argumentos
 @Builder // Anotación para generar un constructor utilizando el patrón Builder
@@ -31,6 +31,6 @@ public class TeacherEntity {
     // Anotación para indicar la relación uno a muchos con la entidad ExamEntity,
     // mapeada por el atributo "teacherEntity" en la entidad ExamEntity
     @OneToMany(mappedBy = "teacherEntity")
-    private Set<ExamEntity> examEntities;
+    private List<ExamEntity> examEntities;
 
 }

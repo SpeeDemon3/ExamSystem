@@ -3,7 +3,7 @@ package com.aruiz.ExamSystem.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.Set;
+import java.util.List;
 
 @AllArgsConstructor // Anotación para generar automáticamente un constructor con todos los argumentos
 @Builder // Anotación para generar un constructor utilizando el patrón Builder
@@ -41,6 +41,6 @@ public class ExamEntity {
             joinColumns = @JoinColumn(name = "examId"),
             inverseJoinColumns = @JoinColumn(name = "studentId")
     )
-    private Set<StudentEntity> studentEntities;
+    private List<StudentEntity> studentEntities;
 
 }
