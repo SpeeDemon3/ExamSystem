@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface StudentServices {
 
-    Student save(StudentRequest estudentRequest) throws Exception;
+    Student save(StudentRequest studentRequest) throws Exception;
 
     List<Student> findAll() throws Exception;
 
