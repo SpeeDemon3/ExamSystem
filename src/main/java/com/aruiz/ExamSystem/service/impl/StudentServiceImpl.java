@@ -98,9 +98,9 @@ public class StudentServiceImpl implements StudentServices {
             // If present, deletes the entity with the given ID
             // Si está presente, elimina la entidad con el ID proporcionado
             studentRepository.deleteById(id);
-            return "Student siccesfully eliminated";
+            return "Student succesfully eliminated";
         } else {
-            return "Student with ID -> " + id + " not found";
+            throw  new NoSuchFieldException("Student with ID -> " + id + " not found");
         }
 
     }
