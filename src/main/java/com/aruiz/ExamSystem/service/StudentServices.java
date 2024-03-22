@@ -15,6 +15,6 @@ public interface StudentServices {
 
     String deleteById(Long id) throws Exception;
 
-    Student updateById(Long id) throws Exception;
+    Student updateById(Long id, StudentRequest studentRequest) throws Exception;
 
 }

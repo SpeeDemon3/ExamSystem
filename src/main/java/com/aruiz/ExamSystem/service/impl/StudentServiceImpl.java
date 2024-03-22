@@ -71,6 +71,17 @@ public class StudentServiceImpl implements StudentServices {
 
     @Override
     public Student findById(Long id) throws Exception {
+        // Find the student entity corresponding to the given ID in the repository
+        // Busca la entidad de estudiante correspondiente al ID proporcionado en el repositorio
+        Optional<StudentEntity> optionalStudentEntity = studentRepository.findById(id);
+
+        if (optionalStudentEntity.isPresent()) {
+            log.info("Student is present");
+            // Converts the entity to a domain object and returns it
+            // Convierte la entidad en un objeto de dominio y lo devuelve
+            return studentConverter.toStudent(optionalStudentEntity.get());
+        }
+
         return null;
     }
 
@@ -95,7 +106,26 @@ public class StudentServiceImpl implements StudentServices {
     }
 
     @Override
-    public Student updateById(Long id) throws Exception {
+    public Student updateById(Long id, StudentRequest studentRequest) throws Exception {
+        // Search the student by ID in the repository
+        // Busca el estudiante por ID en el repositorio
+        Optional<StudentEntity> optionalStudentEntity = studentRepository.findById(id);
+
+        if (optionalStudentEntity.isPresent()) {
+            // Convert the domain object to an entity and save it to the repository
+            // Convierte el objeto de dominio en una entidad y lo guarda en el repositorio
+            StudentEntity studentEntity = studentConverter.toStudentEntity(studentRequest);
+            // Sets the ID given to the entity object before saving it
+            // Establece el ID proporcionado al objeto de entidad antes de guardarlo
+            studentEntity.setId(id);
+
+            // Save the entity to the repository
+            // Guarda la entidad en el repositorio
+            studentRepository.save(studentEntity);
+
+            return studentConverter.toStudent(studentEntity);
+        }
+
         return null;
     }
 }
