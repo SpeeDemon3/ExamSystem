@@ -8,6 +8,7 @@ import lombok.*;
 @AllArgsConstructor
 @Builder
 public class StudentRequest {
+
     private String email;
     private String name;
     private Integer age;

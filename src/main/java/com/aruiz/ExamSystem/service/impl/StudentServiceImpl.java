@@ -4,7 +4,7 @@ import com.aruiz.ExamSystem.controller.dtos.StudentRequest;
 import com.aruiz.ExamSystem.domain.Student;
 import com.aruiz.ExamSystem.entity.StudentEntity;
 import com.aruiz.ExamSystem.repository.StudentRepository;
-import com.aruiz.ExamSystem.service.StudentServices;
+import com.aruiz.ExamSystem.service.StudentService;
 import com.aruiz.ExamSystem.service.converter.StudentConverter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +17,7 @@ import java.util.Optional;
 
 @Service
 @Slf4j
-public class StudentServiceImpl implements StudentServices {
+public class StudentServiceImpl implements StudentService {
 
     @Autowired
     private StudentRepository studentRepository;

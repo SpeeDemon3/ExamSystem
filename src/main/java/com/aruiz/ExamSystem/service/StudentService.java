@@ -5,7 +5,7 @@ import com.aruiz.ExamSystem.domain.Student;
 
 import java.util.List;
 
-public interface StudentServices {
+public interface StudentService {
 
     Student save(StudentRequest studentRequest) throws Exception;
 

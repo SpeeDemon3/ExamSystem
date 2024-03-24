@@ -3,8 +3,7 @@ package com.aruiz.ExamSystem.controller;
 import com.aruiz.ExamSystem.controller.dtos.StudentRequest;
 import com.aruiz.ExamSystem.controller.mapper.StudentMapper;
 import com.aruiz.ExamSystem.domain.Student;
-import com.aruiz.ExamSystem.entity.StudentEntity;
-import com.aruiz.ExamSystem.service.StudentServices;
+import com.aruiz.ExamSystem.service.StudentService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -18,7 +17,7 @@ import java.util.Optional;
 public class StudentController {
 
     @Autowired
-    private StudentServices studentServices;
+    private StudentService studentServices;
 
     @Autowired
     private StudentMapper studentMapper;

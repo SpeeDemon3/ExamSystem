@@ -3,17 +3,12 @@ package com.aruiz.ExamSystem.controller.mapper;
 import com.aruiz.ExamSystem.controller.dtos.StudentRequest;
 import com.aruiz.ExamSystem.controller.dtos.StudentResponse;
 import com.aruiz.ExamSystem.domain.Student;
-import com.aruiz.ExamSystem.service.StudentServices;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Slf4j
 @Component
 public class StudentMapper {
-
-    @Autowired
-    private StudentServices studentServices;
 
     // Method to convert a Student object to a StudentResponse object
     // Método para convertir un objeto Student a un objeto StudentResponse

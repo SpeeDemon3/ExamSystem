@@ -4,7 +4,7 @@ import com.aruiz.ExamSystem.controller.dtos.TeacherRequest;
 import com.aruiz.ExamSystem.domain.Teacher;
 import com.aruiz.ExamSystem.entity.TeacherEntity;
 import com.aruiz.ExamSystem.repository.TeacherRepository;
-import com.aruiz.ExamSystem.service.TeacherServices;
+import com.aruiz.ExamSystem.service.TeacherService;
 import com.aruiz.ExamSystem.service.converter.TeacherConverter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +17,7 @@ import java.util.Optional;
 
 @Service
 @Slf4j
-public class TeacherServiceImpl implements TeacherServices {
+public class TeacherServiceImpl implements TeacherService {
 
     @Autowired
     private TeacherRepository teacherRepository;
@@ -87,11 +87,46 @@ public class TeacherServiceImpl implements TeacherServices {
 
     @Override
     public String deleteById(Long id) throws Exception {
-        return null;
+        // Find the brand entity corresponding to the given ID in the repository
+        // Busca la entidad de marca correspondiente al ID proporcionado en el repositorio
+        Optional<TeacherEntity> teacherEntityOptional = teacherRepository.findById(id);
+
+        if (teacherEntityOptional.isPresent()) {
+            // Remove the entity from the repository
+            // Elimina la entidad del repositorio
+            teacherRepository.deleteById(id);
+
+            return "Teacher with ID " + id + " was eliminated";
+        } else {
+            log.error("Id not found");
+            throw new NoSuchElementException("Teacher not found with ID -> " + id);
+        }
+
     }
 
     @Override
     public Teacher updateById(Long id, TeacherRequest teacherRequest) throws Exception {
-        return null;
+
+        // Search the brand by ID in the repository
+        // Busca la marca por ID en el repositorio
+        Optional<TeacherEntity> optionalTeacherEntity = teacherRepository.findById(id);
+
+        if (optionalTeacherEntity.isPresent()) {
+            // Convert the domain object to an entity and save it to the repository
+            // Convierte el objeto de dominio en una entidad y lo guarda en el repositorio
+            TeacherEntity teacherEntity = teacherConverter.toTeacherEntity(teacherRequest);
+            // Sets the ID given to the entity object before saving it
+            // Establece el ID proporcionado al objeto de entidad antes de guardarlo
+            teacherEntity.setId(id);
+
+            // Convert the entity to domain and save the entity to the repository
+            // Convierte la entidad a dominio y guarda la entidad en el repositorio
+            return teacherConverter.toTeacher(teacherRepository.save(teacherEntity));
+
+        } else {
+            log.error("Id not found");
+            throw new NoSuchElementException("Teacher not found with ID -> " + id);
+        }
+
     }
 }
