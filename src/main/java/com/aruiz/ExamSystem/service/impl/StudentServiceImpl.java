@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @Service
@@ -124,8 +125,13 @@ public class StudentServiceImpl implements StudentServices {
             studentRepository.save(studentEntity);
 
             return studentConverter.toStudent(studentEntity);
+        } else {
+            log.error("ID not found");
+            throw new NoSuchElementException("Student not found with ID -> " + id);
         }
 
-        return null;
+
     }
+
+
 }

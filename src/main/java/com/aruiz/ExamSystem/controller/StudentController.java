@@ -96,4 +96,14 @@ public class StudentController {
 
     }
 
+    @PutMapping("updateById/{id}")
+    public ResponseEntity<?> updateById(@PathVariable Long id, @RequestBody StudentRequest studentRequest) {
+        try {
+            return ResponseEntity.ok().body(studentServices.updateById(id, studentRequest));
+        } catch (Exception e) {
+            return ResponseEntity.notFound().build();
+        }
+
+    }
+
 }
