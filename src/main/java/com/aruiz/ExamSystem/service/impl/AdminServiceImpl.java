@@ -8,8 +8,10 @@ import com.aruiz.ExamSystem.service.AdminService;
 import com.aruiz.ExamSystem.service.converter.AdminConverter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -25,19 +27,33 @@ public class AdminServiceImpl implements AdminService {
     @Override
     public Admin save(AdminRequest adminRequest) throws Exception {
 
-        if(adminRequest.getEmail() != null) {
+            log.info("Succesfully created admin");
 
-            AdminEntity adminEntity = adminConverter.toAdminEntity(adminRequest);
+            AdminEntity adminEntity = adminRepository.save(adminConverter.toAdminEntity(adminRequest));
 
-            return adminConverter.toAdmin(adminRepository.save(adminEntity));
-        }
+            log.info("Entity ID {}", adminEntity.getId());
 
-        return null;
+            return adminConverter.toAdmin(adminEntity);
+
     }
 
     @Override
     public List<Admin> findAll() throws Exception {
-        return null;
+
+        List<AdminEntity> adminEntityList = adminRepository.findAll();
+
+        if (!adminEntityList.isEmpty()) {
+
+            List<Admin> adminList = new ArrayList<>();
+
+            adminEntityList.forEach(admin -> adminList.add(adminConverter.toAdmin(admin)));
+
+            return adminList;
+
+        } else {
+            throw  new EmptyResultDataAccessException("No entities found", 1);
+        }
+
     }
 
     @Override

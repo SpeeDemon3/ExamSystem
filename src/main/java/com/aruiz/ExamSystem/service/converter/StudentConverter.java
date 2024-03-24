@@ -16,7 +16,7 @@ public class StudentConverter {
                 // No se asigna un ID ya que es generado automáticamente por la base de datos
                 .id(studentEntity.getId())
                 .email(studentEntity.getEmail())
-                .name(studentEntity.getEmail())
+                .name(studentEntity.getName())
                 .age(studentEntity.getAge())
                 .phoneNumber(studentEntity.getPhoneNumber())
                 .role(studentEntity.getRole())
@@ -28,7 +28,6 @@ public class StudentConverter {
     // Método para convertir un objeto StudentRequest a un objeto StudentEntity
     public StudentEntity toStudentEntity(StudentRequest studentRequest) {
         return StudentEntity.builder()
-                .id(null)
                 .email(studentRequest.getEmail())
                 .name(studentRequest.getName())
                 .age(studentRequest.getAge())
