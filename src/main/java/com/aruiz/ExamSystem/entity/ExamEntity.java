@@ -29,7 +29,7 @@ public class ExamEntity {
     // mapeada por el atributo "teacherEntity" en la entidad TeacherEntity
     @ManyToOne
     @JoinColumn(name = "teacherId")
-    private TeacherEntity teacherEntity;
+    private Long teacherId;
 
     // Annotation to indicate the many-to-many relationship with the StudentEntity entity,
     // using an intermediate table "attendance"

@@ -18,7 +18,7 @@ public class Exam {
     private String subjectName;
     private String dateExam;
     private Integer examDurationMinutes;
-    private TeacherEntity teacherEntity;
+    private Long teacherId;
     private List<StudentEntity> studentEntities;
 
 }

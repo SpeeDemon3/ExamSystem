@@ -41,4 +41,32 @@ public class AdminController {
         }
     }
 
+    @GetMapping("/findById/{id}")
+    public ResponseEntity<?> findById(@PathVariable Long id) {
+        try {
+            return ResponseEntity.ok(adminMapper.toAdminResponse(adminService.findById(id)));
+        } catch (Exception e) {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @DeleteMapping("/deleteById/{id}")
+    public ResponseEntity<?> deleteById(@PathVariable Long id) {
+        try {
+            return ResponseEntity.ok(adminService.deleteById(id));
+        } catch (Exception e) {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @PutMapping("/uploadById/{id}")
+    public ResponseEntity<?> uploadById(@PathVariable Long id, @RequestBody AdminRequest adminRequest) {
+        try {
+            return ResponseEntity.ok(adminService.updateById(id, adminRequest));
+        } catch (Exception e) {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+
 }
