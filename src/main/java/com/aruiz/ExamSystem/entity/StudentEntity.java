@@ -30,7 +30,7 @@ public class StudentEntity {
     // mapped by the "studentEntities" attribute on the ExamEntity entity
     // Anotación para indicar la relación muchos a muchos con la entidad ExamEntity,
     // mapeada por el atributo "studentEntities" en la entidad ExamEntity
-    @ManyToMany(mappedBy = "studentEntities")
+    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL)
     private List<ExamEntity> exams;
 
 

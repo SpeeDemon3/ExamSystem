@@ -22,6 +22,7 @@ public class ExamEntity {
     private String subjectName;
     private String dateExam;
     private Integer examDurationMinutes;
+    private Double noteStudent;
 
     // Annotation to indicate the many-to-one relationship with the TeacherEntity entity,
     // mapped by the "teacherEntity" attribute on the TeacherEntity entity
@@ -29,18 +30,10 @@ public class ExamEntity {
     // mapeada por el atributo "teacherEntity" en la entidad TeacherEntity
     @ManyToOne
     @JoinColumn(name = "teacherId")
-    private Long teacherId;
+    private TeacherEntity teacher;
 
-    // Annotation to indicate the many-to-many relationship with the StudentEntity entity,
-    // using an intermediate table "attendance"
-    // Anotación para indicar la relación muchos a muchos con la entidad StudentEntity,
-    // utilizando una tabla intermedia "attendance"
-    @ManyToMany
-    @JoinTable(
-            name = "attendance",
-            joinColumns = @JoinColumn(name = "examId"),
-            inverseJoinColumns = @JoinColumn(name = "studentId")
-    )
-    private List<StudentEntity> studentEntities;
+    @ManyToOne
+    @JoinColumn(name = "studentId")
+    private StudentEntity student;
 
 }

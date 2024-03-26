@@ -76,4 +76,23 @@ public class TeacherMapper {
 
     }
 
+    public Teacher toTeacherModel(Teacher teacher) {
+
+        if (teacher.getEmail() != null) {
+            return Teacher.builder()
+                    .id(null)
+                    .email(teacher.getEmail())
+                    .name(teacher.getName())
+                    .age(teacher.getAge())
+                    .phoneNumber(teacher.getPhoneNumber())
+                    .role(teacher.getRole())
+                    .img(teacher.getImg())
+                    .build();
+        } else {
+            log.error("Teacher is empty");
+            return null;
+        }
+
+    }
+
 }

@@ -1,7 +1,7 @@
 package com.aruiz.ExamSystem.controller.dtos;
 
+import com.aruiz.ExamSystem.domain.Student;
 import com.aruiz.ExamSystem.domain.Teacher;
-import com.aruiz.ExamSystem.entity.TeacherEntity;
 import lombok.*;
 
 @AllArgsConstructor
@@ -14,5 +14,7 @@ public class ExamResponse {
     private String subjectName;
     private String dateExam;
     private Integer examDurationMinutes;
-    private Teacher teacherEntity;
+    private Double noteStudent;
+    private Teacher teacher;
+    private Student student;
 }

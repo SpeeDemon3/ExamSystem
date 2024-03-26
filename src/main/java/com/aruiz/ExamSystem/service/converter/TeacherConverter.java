@@ -39,4 +39,18 @@ public class TeacherConverter {
                 .build();
     }
 
+    // Method to convert a TeacherRequest object to a TeacherEntity object
+    // Método para convertir un objeto TeacherRequest a un objeto TeacherEntity
+    public TeacherEntity toTeacherEntity(Teacher teacher) {
+        return TeacherEntity.builder()
+                .id(null)
+                .email(teacher.getEmail())
+                .name(teacher.getName())
+                .age(teacher.getAge())
+                .phoneNumber(teacher.getPhoneNumber())
+                .role(teacher.getRole())
+                .img(teacher.getImg())
+                .build();
+    }
+
 }

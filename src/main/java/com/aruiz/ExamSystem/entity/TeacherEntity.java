@@ -30,7 +30,7 @@ public class TeacherEntity {
     // mapped by the "teacherEntity" attribute on the ExamEntity entity
     // Anotación para indicar la relación uno a muchos con la entidad ExamEntity,
     // mapeada por el atributo "teacherEntity" en la entidad ExamEntity
-    @OneToMany(mappedBy = "teacherEntity")
+    @OneToMany(mappedBy = "teacher", cascade = CascadeType.ALL)
     private List<ExamEntity> examEntities;
 
 }
