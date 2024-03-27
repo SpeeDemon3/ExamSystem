@@ -43,7 +43,7 @@ public class TeacherConverter {
     // Método para convertir un objeto TeacherRequest a un objeto TeacherEntity
     public TeacherEntity toTeacherEntity(Teacher teacher) {
         return TeacherEntity.builder()
-                .id(null)
+                .id(teacher.getId())
                 .email(teacher.getEmail())
                 .name(teacher.getName())
                 .age(teacher.getAge())

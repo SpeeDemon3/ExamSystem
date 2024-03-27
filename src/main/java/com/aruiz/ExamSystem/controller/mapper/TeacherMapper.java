@@ -80,7 +80,7 @@ public class TeacherMapper {
 
         if (teacher.getEmail() != null) {
             return Teacher.builder()
-                    .id(null)
+                    .id(teacher.getId())
                     .email(teacher.getEmail())
                     .name(teacher.getName())
                     .age(teacher.getAge())

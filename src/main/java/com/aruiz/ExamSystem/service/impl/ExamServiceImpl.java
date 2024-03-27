@@ -26,11 +26,12 @@ public class ExamServiceImpl implements ExamService {
     @Override
     public Exam save(ExamRequest examRequest) throws Exception {
 
-        log.info("Saving exam, teacherID {}, SubjectName {}", examRequest.getIdTeacherEntity(), examRequest.getSubjectName());
+        log.info("Saving exam, teacherID {}, SubjectName {}", examRequest.getTeacherId(), examRequest.getSubjectName());
+        log.info("Saving exam, studentID {}", examRequest.getStudentId());
 
         ExamEntity examEntity = examConverter.toExamEntity(examRequest);
 
-        log.info("EntitySave ID {}", examEntity.getId());
+        log.info("EntitySave ID {}", examEntity.getStudent());
 
         ExamEntity examEntitySave = examRepository.save(examEntity);
 

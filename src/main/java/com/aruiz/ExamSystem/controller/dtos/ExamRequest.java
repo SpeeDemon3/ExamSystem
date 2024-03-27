@@ -15,6 +15,6 @@ public class ExamRequest {
     private String dateExam;
     private Integer examDurationMinutes;
     private Double noteStudent;
-    private Long idTeacherEntity;
-    private Long student;
+    private Long teacherId;
+    private Long studentId;
 }

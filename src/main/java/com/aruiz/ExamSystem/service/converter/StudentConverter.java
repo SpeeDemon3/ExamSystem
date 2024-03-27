@@ -28,12 +28,25 @@ public class StudentConverter {
     // Método para convertir un objeto StudentRequest a un objeto StudentEntity
     public StudentEntity toStudentEntity(StudentRequest studentRequest) {
         return StudentEntity.builder()
+                .id(null)
                 .email(studentRequest.getEmail())
                 .name(studentRequest.getName())
                 .age(studentRequest.getAge())
                 .phoneNumber(studentRequest.getPhoneNumber())
                 .role(studentRequest.getRole())
                 .img(studentRequest.getImg())
+                .build();
+    }
+
+    public StudentEntity toStudentEntity(Student student) {
+        return StudentEntity.builder()
+                .id(student.getId())
+                .email(student.getEmail())
+                .name(student.getName())
+                .age(student.getAge())
+                .phoneNumber(student.getPhoneNumber())
+                .role(student.getRole())
+                .img(student.getImg())
                 .build();
     }
 

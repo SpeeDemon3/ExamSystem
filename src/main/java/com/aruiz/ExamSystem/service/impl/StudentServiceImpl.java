@@ -33,7 +33,7 @@ public class StudentServiceImpl implements StudentService {
         // Convert the student request object to a student entity
         // Convierte el objeto de solicitud de estudiante a una entidad de estudiante
         StudentEntity studentEntity = studentConverter.toStudentEntity(studentRequest);
-        log.info("Converted to entity: ", studentEntity);
+        log.info("Converted to entity: " + studentEntity);
 
         // Save the student entity to the repository and get the saved entity
         // Guarda la entidad de estudiante en el repositorio y obtiene la entidad guardada

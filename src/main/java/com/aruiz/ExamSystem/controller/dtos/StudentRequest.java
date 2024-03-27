@@ -2,10 +2,9 @@ package com.aruiz.ExamSystem.controller.dtos;
 
 import lombok.*;
 
-@Getter
-@Setter
-@NoArgsConstructor
+@Data
 @AllArgsConstructor
+@NoArgsConstructor
 @Builder
 public class StudentRequest {
 

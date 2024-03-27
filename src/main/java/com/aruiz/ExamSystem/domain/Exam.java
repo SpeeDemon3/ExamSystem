@@ -1,13 +1,9 @@
 package com.aruiz.ExamSystem.domain;
 
-import com.aruiz.ExamSystem.entity.StudentEntity;
-import com.aruiz.ExamSystem.entity.TeacherEntity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -18,6 +14,7 @@ public class Exam {
     private String subjectName;
     private String dateExam;
     private Integer examDurationMinutes;
-    private TeacherEntity teacherId;
-    private List<StudentEntity> studentEntities;
+    private Double noteStudent;
+    private Teacher teacher;
+    private  Student student;
 }
